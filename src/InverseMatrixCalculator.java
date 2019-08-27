@@ -86,7 +86,8 @@ public class InverseMatrixCalculator
 
 				try
 				{
-					
+					MatrixWindow matrix = new MatrixWindow();
+					matrix.open();
 					
 				} catch (Exception ex)
 				{
