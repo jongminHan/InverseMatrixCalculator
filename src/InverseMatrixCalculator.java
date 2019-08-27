@@ -8,23 +8,28 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Spinner;
+import org.eclipse.swt.widgets.Table;
 
-public class InverseMatrixCalculator {
+public class InverseMatrixCalculator
+{
 
 	protected Shell shell;
-	private Text textRow;
-	private Text textCol;
 
 	/**
 	 * Launch the application.
+	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		try {
+	public static void main(String[] args)
+	{
+		try
+		{
 			InverseMatrixCalculator window = new InverseMatrixCalculator();
 			window.open();
-		} 
-		catch (Exception e) {
+		} catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 	}
@@ -32,13 +37,16 @@ public class InverseMatrixCalculator {
 	/**
 	 * Open the window.
 	 */
-	public void open() {
+	public void open()
+	{
 		Display display = Display.getDefault();
 		createContents();
 		shell.open();
 		shell.layout();
-		while (!shell.isDisposed()) {
-			if (!display.readAndDispatch()) {
+		while (!shell.isDisposed())
+		{
+			if (!display.readAndDispatch())
+			{
 				display.sleep();
 			}
 		}
@@ -47,34 +55,43 @@ public class InverseMatrixCalculator {
 	/**
 	 * Create contents of the window.
 	 */
-	protected void createContents() {
+	protected void createContents()
+	{
 		shell = new Shell();
 		shell.setSize(749, 379);
 		shell.setText("SWT Application");
-		
+
 		Label lblEnterTheRow = new Label(shell, SWT.NONE);
 		lblEnterTheRow.setBounds(114, 106, 140, 15);
 		lblEnterTheRow.setText("Enter the number of row");
-		
+
 		Label lblEnterTheCol = new Label(shell, SWT.NONE);
 		lblEnterTheCol.setBounds(114, 157, 163, 15);
 		lblEnterTheCol.setText("Enter the number of column");
-		
-		textRow = new Text(shell, SWT.BORDER); // 행의 개수를 입력
-		textRow.setBounds(317, 106, 76, 21);
-		
-		textCol = new Text(shell, SWT.BORDER); // 열의 개수를 입력
-		textCol.setBounds(317, 157, 76, 21);
-		
+
+		Spinner spinnerRow = new Spinner(shell, SWT.BORDER);
+		spinnerRow.setBounds(317, 106, 47, 22);
+
+		Spinner spinnerCol = new Spinner(shell, SWT.BORDER);
+		spinnerCol.setBounds(317, 157, 47, 22);
+
 		Button btnOk = new Button(shell, SWT.NONE); // 버튼이 눌리면 주어진 행, 열의 개수에 따라 비어있는 매트릭스 생성
-		btnOk.addMouseListener(new MouseAdapter() {
+		btnOk.addMouseListener(new MouseAdapter()
+		{
 			@Override
-			public void mouseUp(MouseEvent e) {
-				int row = Integer.parseInt(textRow.getText());
-				int col = Integer.parseInt(textCol.getText());
-				
-				System.out.println("Row:" + row);
-				System.out.println("Column:" + col);
+			public void mouseUp(MouseEvent e)
+			{
+				int row = spinnerRow.getSelection();
+				int col = spinnerCol.getSelection();
+
+				try
+				{
+					
+					
+				} catch (Exception ex)
+				{
+					ex.printStackTrace();
+				}
 			}
 		});
 		btnOk.setBounds(449, 157, 75, 25);
