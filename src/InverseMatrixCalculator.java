@@ -87,7 +87,7 @@ public class InverseMatrixCalculator
 
 				try
 				{
-					MatrixWindow matrix = new MatrixWindow();
+					MatrixWindow matrix = new MatrixWindow(row, col);
 					matrix.NewScreen(row, col);
 					
 				} 
