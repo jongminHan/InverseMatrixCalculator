@@ -28,7 +28,8 @@ public class InverseMatrixCalculator
 		{
 			InverseMatrixCalculator window = new InverseMatrixCalculator();
 			window.open();
-		} catch (Exception e)
+		} 
+		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
@@ -87,9 +88,10 @@ public class InverseMatrixCalculator
 				try
 				{
 					MatrixWindow matrix = new MatrixWindow();
-					matrix.open();
+					matrix.NewScreen(row, col);
 					
-				} catch (Exception ex)
+				} 
+				catch (Exception ex)
 				{
 					ex.printStackTrace();
 				}

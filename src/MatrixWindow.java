@@ -3,25 +3,30 @@ import org.eclipse.swt.widgets.Shell;
 
 public class MatrixWindow
 {
-
+	
 	protected Shell shell;
+	private int mRow;
+	private int mCol;
 
+	
 	/**
-	 * Launch the application.
-	 * @param args
+	 * @wbp.parser.entryPoint
 	 */
-	public static void main(String[] args)
+	public void NewScreen(int row, int col)
 	{
+		mRow = row;
+		mCol = col;
 		try
 		{
 			MatrixWindow window = new MatrixWindow();
 			window.open();
-		} catch (Exception e)
+		} 
+		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
-
+	
 	/**
 	 * Open the window.
 	 */
