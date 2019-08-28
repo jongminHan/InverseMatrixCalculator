@@ -9,12 +9,15 @@ public class MatrixWindow
 	protected Shell shell;
 	private int mRow;
 	private int mCol;
-	private Text[][] mMatrix;
+	private Text[][] mTextMatrix;
+	private int[][] mMatrix;
 	
 	public MatrixWindow(int row, int col)
 	{
 		mRow = row;
 		mCol = col;
+		
+		mMatrix = new int[mRow][mCol];
 	}
 	/**
 	 * @wbp.parser.entryPoint
@@ -49,6 +52,21 @@ public class MatrixWindow
 			{
 				display.sleep();
 			}
+			
+			for (int i = 0; i < mRow; i++)
+			{
+				for (int j = 0; j < mCol; j++)
+				{
+					try
+					{
+						mMatrix[i][j] = Integer.parseInt(mTextMatrix[i][j].getText());
+					}
+					catch (NumberFormatException e)
+					{
+						mMatrix[i][j] = 0;
+					}
+				}
+			}
 		}
 	}
 
@@ -61,17 +79,17 @@ public class MatrixWindow
 		shell.setSize(552, 393);
 		shell.setText("Matrix Window");
 		
-		mMatrix = new Text[mRow][mCol];
+		mTextMatrix = new Text[mRow][mCol];
 		
 		for (int i = 0; i < mRow; i++)
 		{
 			for (int j = 0; j < mCol; j++)
 			{
-				mMatrix[i][j] = new Text(shell, SWT.BORDER);
-				mMatrix[i][j].setBounds(50 + j * 40, 52 + i * 40, 30, 30);
+				mTextMatrix[i][j] = new Text(shell, SWT.BORDER);
+				mTextMatrix[i][j].setBounds(50 + j * 40, 52 + i * 40, 30, 30);
 			}
 		}
-		System.out.println(mRow);
-		System.out.println(mCol);
+		
+		
 	}
 }
