@@ -72,11 +72,7 @@ public class InverseMatrixCalculator
 		spinner.setBounds(347, 154, 47, 22);
 
 		Button btnOk = new Button(shell, SWT.NONE); // 버튼이 눌리면 주어진 행, 열의 개수에 따라 비어있는 매트릭스 생성
-		btnOk.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-			}
-		});
+		
 		btnOk.addMouseListener(new MouseAdapter()
 		{
 			@Override

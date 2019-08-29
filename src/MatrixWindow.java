@@ -3,6 +3,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 
 public class MatrixWindow
 {
@@ -50,20 +52,7 @@ public class MatrixWindow
 				display.sleep();
 			}
 			
-			for (int i = 0; i < mDimension; i++)
-			{
-				for (int j = 0; j < mDimension; j++)
-				{
-					try
-					{
-						mMatrix[i][j] = Integer.parseInt(mTextMatrix[i][j].getText());
-					}
-					catch (NumberFormatException e)
-					{
-						mMatrix[i][j] = 0;
-					}
-				}
-			}
+			
 		}
 	}
 
@@ -92,5 +81,29 @@ public class MatrixWindow
 		
 		getInvMatrix.setText("Get inverse matrix");
 		getInvMatrix.setBounds(mTextMatrix[mDimension - 1][mDimension - 1].getLocation().x + 40, mTextMatrix[mDimension - 1][mDimension - 1].getLocation().y, 130, 30);
+		getInvMatrix.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseUp(MouseEvent e)
+			{
+				for (int i = 0; i < mDimension; i++)
+				{
+					for (int j = 0; j < mDimension; j++)
+					{
+						try
+						{
+							mMatrix[i][j] = Integer.parseInt(mTextMatrix[i][j].getText());
+						}
+						catch (NumberFormatException exception)
+						{
+							mMatrix[i][j] = 0;
+						}
+					}
+				}
+			}
+		});
+		
+		
+				
 	}
 }
