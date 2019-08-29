@@ -11,6 +11,8 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 
 public class InverseMatrixCalculator
 {
@@ -62,33 +64,30 @@ public class InverseMatrixCalculator
 		shell.setSize(749, 379);
 		shell.setText("SWT Application");
 
-		Label lblEnterTheRow = new Label(shell, SWT.NONE);
-		lblEnterTheRow.setBounds(114, 106, 140, 15);
-		lblEnterTheRow.setText("Enter the number of row");
+		Label lblEnterTheDimension = new Label(shell, SWT.NONE);
+		lblEnterTheDimension.setBounds(114, 157, 227, 15);
+		lblEnterTheDimension.setText("Enter the dimension of square matrix");
 
-		Label lblEnterTheCol = new Label(shell, SWT.NONE);
-		lblEnterTheCol.setBounds(114, 157, 163, 15);
-		lblEnterTheCol.setText("Enter the number of column");
-
-		Spinner spinnerRow = new Spinner(shell, SWT.BORDER);
-		spinnerRow.setBounds(317, 106, 47, 22);
-
-		Spinner spinnerCol = new Spinner(shell, SWT.BORDER);
-		spinnerCol.setBounds(317, 157, 47, 22);
+		Spinner spinner = new Spinner(shell, SWT.BORDER);
+		spinner.setBounds(347, 154, 47, 22);
 
 		Button btnOk = new Button(shell, SWT.NONE); // 버튼이 눌리면 주어진 행, 열의 개수에 따라 비어있는 매트릭스 생성
+		btnOk.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+			}
+		});
 		btnOk.addMouseListener(new MouseAdapter()
 		{
 			@Override
 			public void mouseUp(MouseEvent e)
 			{
-				int row = spinnerRow.getSelection();
-				int col = spinnerCol.getSelection();
+				int dimension = spinner.getSelection();
 
 				try
 				{
-					MatrixWindow matrix = new MatrixWindow(row, col);
-					matrix.NewScreen(row, col);
+					MatrixWindow matrix = new MatrixWindow(dimension);
+					matrix.NewScreen(dimension);
 					
 				} 
 				catch (Exception ex)
@@ -97,7 +96,7 @@ public class InverseMatrixCalculator
 				}
 			}
 		});
-		btnOk.setBounds(449, 157, 75, 25);
+		btnOk.setBounds(442, 152, 75, 25);
 		btnOk.setText("OK");
 	}
 }
